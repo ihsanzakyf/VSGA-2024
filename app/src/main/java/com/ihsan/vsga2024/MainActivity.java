@@ -1,6 +1,9 @@
 package com.ihsan.vsga2024;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +11,31 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
+    String[] nama = new String[] {
+            "Indonesia",
+            "Malaysia",
+            "Singapore",
+            "Thailand",
+            "Filipina",
+            "Brunei Darussalam",
+            "Timor Leste",
+            "Vietnam",
+            "Papua Nugini",
+            "Belanda",
+            "Canada",
+            "Argentina",
+            "Arab Saudi",
+            "Italia",
+            "Aljazair",
+            "Swistzerland",
+            "German",
+            "Hongkong",
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +47,23 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Arrays.sort(nama);
+
+        listView = findViewById(R.id.listView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                nama);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener((adapterView, view, position, id) -> {
+            Toast.makeText(MainActivity.this,
+                    "Anda memilih " + nama[position],
+                            Toast.LENGTH_LONG)
+                    .show();
+        });
+
     }
 }
