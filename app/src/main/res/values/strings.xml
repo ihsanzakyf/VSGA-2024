@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VSGA 2024</string>
+    <string name="fillYourName">Fill your Name</string>
+    <string name="show">Show</string>
+    <string name="yourName">Your Name : %1$s</string>
+    <string name="editTextHint">Enter text here</string>
 </resources>
